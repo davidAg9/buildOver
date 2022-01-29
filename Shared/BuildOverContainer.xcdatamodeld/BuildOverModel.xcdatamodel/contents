@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D5039d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BONotifications" representedClassName="BONotifications" syncable="YES" codeGenerationType="class">
+        <attribute name="buildDescription" optional="YES" attributeType="String"/>
+        <attribute name="completionDateTime" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="status" attributeType="String" defaultValueString="pending"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="notificationGroup" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NotificationUser" inverseName="notificationuser" inverseEntity="NotificationUser"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BOUser" inverseName="notifications" inverseEntity="BOUser"/>
+    </entity>
+    <entity name="BOUser" representedClassName="BOUser" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="fullName" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="photoUrl" optional="YES" attributeType="String"/>
+        <relationship name="notifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BONotifications" inverseName="user" inverseEntity="BONotifications"/>
+    </entity>
+    <entity name="NotificationUser" representedClassName="NotificationUser" syncable="YES" codeGenerationType="class">
+        <attribute name="notificationId" attributeType="String"/>
+        <attribute name="userId" attributeType="String"/>
+        <relationship name="notificationuser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BONotifications" inverseName="notificationGroup" inverseEntity="BONotifications"/>
+    </entity>
+    <elements>
+        <element name="BONotifications" positionX="-54" positionY="18" width="128" height="148"/>
+        <element name="BOUser" positionX="-197.1398315429688" positionY="-209.6371154785156" width="128" height="118"/>
+        <element name="NotificationUser" positionX="-419.4111938476562" positionY="-59.97409057617188" width="128" height="88"/>
+    </elements>
+</model>
